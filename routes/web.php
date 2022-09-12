@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Showdetail;
+use App\Http\Livewire\ShowProject;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('/job', function () {
+        return view('job');
+    })->name('job');
 
-require __DIR__.'/auth.php';
+    Route::get('/job/{id}', Showdetail::class)->name('detail');
+});
+
+
+
+require __DIR__ . '/auth.php';

@@ -6,20 +6,14 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
+
 class CreateProject extends Component
 {
+
     public $name_project;
     public $location_project;
     public $time_start;
     public $time_end;
-
-    // public $time_start;
-    // protected $rules = [
-    //     'name_project' => 'required',
-    //     'location_project' => 'required',
-    //     'time_start' => 'required',
-    //     'time_end' => 'required',
-    // ];
     public function render()
     {
         return view('livewire.create-project');
@@ -42,6 +36,6 @@ class CreateProject extends Component
         ]);
 
         session()->flash('succes', 'Upload Data Success.');
-        return redirect()->to('/');
+        return redirect()->to('/job');
     }
 }
